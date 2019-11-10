@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "974642614374",
+    "firebase_url": "https://growth-view.firebaseio.com",
+    "project_id": "growth-view",
+    "storage_bucket": "growth-view.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974642614374:android:579789a74290a3f11d9da7",
+        "android_client_info": {
+          "package_name": "com.example.greenhousemonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974642614374-uvr6lf25rrlc91oi7g97nvoqaqnmgf2s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.greenhousemonitor",
+            "certificate_hash": "273f31f4ea24f8c4cb317db11ca0927bdbdef47e"
+          }
+        },
+        {
+          "client_id": "974642614374-0j2bc2mt24idpud096bfm5aq1bo75lt4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBe6D68GIUOZsLFKerlJBC8lzQHDGxRLPM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974642614374-0j2bc2mt24idpud096bfm5aq1bo75lt4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
