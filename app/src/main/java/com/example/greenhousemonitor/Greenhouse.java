@@ -9,38 +9,34 @@
 
 package com.example.greenhousemonitor;
 
+import java.util.ArrayList;
+
 public class Greenhouse {
-    private float lightLevel;
-    private float temperature;
-    private float humidity;
+    private int greenhouseId;
+    private String greenhouseName;
+    private ArrayList<Sensor> sensors;
 
-    public Greenhouse(float lightLevel, float temperature, float humidity) {
-        this.lightLevel = lightLevel;
-        this.temperature = temperature;
-        this.humidity = humidity;
+    public Greenhouse(int greenhouseId, String greenhouseName) {
+        this.greenhouseId = greenhouseId;
+        this.greenhouseName = greenhouseName;
+        sensors = new ArrayList<>();
     }
 
-    public void setLightLevel(float lightLevel) {
-        this.lightLevel = lightLevel;
+    public int getGreenhouseId() {
+        return greenhouseId;
     }
 
-    public void setTemperature(float temperature) {
-        this.temperature = temperature;
+    public String getGreenhouseName() {
+        return greenhouseName;
     }
 
-    public void setHumidity(float humidity) {
-        this.humidity = humidity;
+    public void addSensor(Sensor sensor) {
+        if (!sensors.contains(sensor)) {
+            sensors.add(sensor);
+        }
     }
 
-    public float getLightLevel() {
-        return lightLevel;
-    }
-
-    public float getTemperature() {
-        return temperature;
-    }
-
-    public float getHumidity() {
-        return humidity;
+    public ArrayList<Sensor> getAllSensors() {
+        return sensors;
     }
 }

@@ -16,6 +16,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.greenhousemonitor.MainApplication;
 
+/**
+ * Class: TabFragment
+ * Extends: Fragment
+ * Descr: Base class which tabs derive from. Provides some default behavior
+ */
 public class TabFragment extends Fragment {
 
     public MainApplication getMainApplication() {

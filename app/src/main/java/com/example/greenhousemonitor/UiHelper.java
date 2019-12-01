@@ -6,6 +6,7 @@
  * Class: Network Application Development
  * Description: Helper class for showing ui objects across any activity
  */
+
 package com.example.greenhousemonitor;
 
 import android.app.Activity;
@@ -15,6 +16,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 public class UiHelper {
 
+    /**
+     * Method: showToast
+     * @param activity
+     * @param message
+     * Descr: Show a toast in app
+     * Returns: void
+     */
     public static void showToast(Activity activity, String message) {
         Toast toast = Toast.makeText(activity, message, Toast.LENGTH_LONG);
         View view = toast.getView();

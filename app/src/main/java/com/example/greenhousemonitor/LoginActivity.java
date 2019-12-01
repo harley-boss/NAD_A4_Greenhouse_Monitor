@@ -32,6 +32,12 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GetTokenResult;
 
+/**
+ * Class: LoginActivity
+ * Extends: AppCompatActivity
+ * Implements: View.OnClickListener
+ * Descr: Class that is used to handle the login of the user
+ */
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     public static final int REQUEST_CODE = 100;
     private FirebaseAuth mAuth;
@@ -39,6 +45,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private EditText password;
     private Button login;
 
+    /**
+     * Method: onCreate
+     * @param savedInstanceState
+     * Descr: is called upon instantiation of the class
+     * Returns: void
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,12 +66,20 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         login.setEnabled(false);
     }
 
+    /**
+     * Method: setNotificationBarColor
+     * Descr: Changes the notification bar color to match that of the app
+     * Returns: void
+     */
     private void setNotificationBarColor() {
         Window window = getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(getColor(R.color.edit_line));
     }
 
+    /**
+     * Watcher used to monitor the text field where a user can enter their credentials
+     */
     private TextWatcher watcher = new TextWatcher() {
         @Override
         public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -74,6 +94,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         @Override public void afterTextChanged(Editable s) {}
     };
 
+    /**
+     * Method: onClick
+     * @param v
+     * Descr: Handles the on click event of the submit button in the app
+     * Returns: void
+     */
     @Override
     public void onClick(View v) {
         mAuth.signInWithEmailAndPassword(userName.getText().toString(), password.getText().toString())

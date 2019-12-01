@@ -21,16 +21,34 @@ import android.widget.Spinner;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.greenhousemonitor.Greenhouse;
 import com.example.greenhousemonitor.MainActivity;
 import com.example.greenhousemonitor.R;
+import com.example.greenhousemonitor.User;
 
 import java.util.ArrayList;
 
+/**
+ * Class: TabGreenhouse
+ * Extends: TabFragment
+ * Implements: AdapterView.OnItemSelectedListener
+ * Descr: Tab that handles displaying the available greenhouses to a user
+ */
 public class TabGreenhouse extends TabFragment implements AdapterView.OnItemSelectedListener {
     private Spinner greenSpinner;
     private View view;
     private boolean viewHasBeenSetup;
+    private static String greenhouseName;
 
+    /**
+     * Method: onCreateView
+     * @param inflater
+     * @param container
+     * @param savedInstanceState
+     * Descr: First method called upon the instantiation of the tab
+     * @return: View of the tab
+     */
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -38,41 +56,44 @@ public class TabGreenhouse extends TabFragment implements AdapterView.OnItemSele
         greenSpinner = view.findViewById(R.id.greenSpinner);
         greenSpinner.setOnItemSelectedListener(this);
         viewHasBeenSetup = true;
-        generateDummyData();
+        getUserGreenhouses();
         return view;
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && viewHasBeenSetup) {
-
+    /**
+     * Method: getUserGreenhouses
+     * Descr: Gets all the greenhouses a user has access to and displays them in a list
+     * Return: void
+     */
+    private void getUserGreenhouses() {
+        ArrayList<String> greenhouses = new ArrayList<>();
+        User user = MainActivity.user;
+        for (Greenhouse g : user.getGreenhouses()) {
+            greenhouses.add(g.getGreenhouseName());
         }
-    }
-
-    // TODO: remove when we have real data
-    private void generateDummyData() {
-        ArrayList<String> dummyGreen = new ArrayList<>();
-        dummyGreen.add("Conestoga - Doon");
-        dummyGreen.add("Conestoga - Waterloo");
-        dummyGreen.add("Conestoga - Brantford");
-
-        ArrayAdapter<String> greenAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, dummyGreen);
+        ArrayAdapter<String> greenAdapter = new ArrayAdapter<String>(getActivity(), R.layout.spinner_item, greenhouses);
         greenAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         greenSpinner.setAdapter(greenAdapter);
     }
 
+    /**
+     * Method: onItemSelected
+     * @param parent
+     * @param view
+     * @param position
+     * @param id
+     * Descr: Overridden method that's called when the user makes a selection from the spinner
+     * Returns: void
+     */
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         Activity activity = getActivity();
         if (activity == null) {
             return;
         }
-        ((MainActivity)activity).setGreenhousePicked(true);
+        greenhouseName = (String)parent.getItemAtPosition(position);
+        ((MainActivity)activity).setSelectedGreenhouse(greenhouseName);
     }
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
-
-    }
+    @Override public void onNothingSelected(AdapterView<?> parent) { }
 }

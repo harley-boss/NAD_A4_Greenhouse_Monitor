@@ -22,8 +22,4 @@ public class MainApplication extends Application {
     public User getUser() {
         return user;
     }
-
-    public MainApplication getMainApplication() {
-        return this;
-    }
 }
